@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+h1{
+    text-align: center;
+    color:white;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 50px;
+}
+
+body{
+  background-image:url("../images/back.jpg") ;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
