@@ -3,7 +3,7 @@
 
 h1{
     text-align: center;
-    color:white;
+    color:bisque;
     font-family: "Bebas Neue", sans-serif;
     font-weight: 800;
     font-style: normal;
@@ -11,7 +11,109 @@ h1{
 }
 
 body{
-  background-image:url("../images/back.jpg") ;
+  background-image:url(..//images/back.jpg) ;
   background-repeat: no-repeat;
   background-size: 100%;
+}
+
+.links{
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  text-decoration: none;
+  
+}
+
+h2{
+  color: bisque;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 35px;
+}
+
+footer{
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+a{
+  text-decoration: none;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 25px;
+  color: brown;
+}
+a:hover{
+  color: aqua;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+#counter {
+  color: #4CAF50;
+  font-size: 1.5em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #f3f3f3;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
+.day-counter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.milestones{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.motivation{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.contents{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#add-day{
+  width: fit-content;
+
+}
+
+#reset{
+  width: fit-content;
+
+}
+
+#new-quote{
+  width: fit-content;
 }
