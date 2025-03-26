@@ -53,3 +53,12 @@ document.getElementById('milestone-form').addEventListener('submit', function(e)
     }
 });
 
+function displayRandomQuote() {
+    if (quotes.length > 0) {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById('quote').textContent = quotes[randomIndex];
+    } else {
+        document.getElementById('quote').textContent = "You're doing great! Keep going!";
+    }
+}
+
