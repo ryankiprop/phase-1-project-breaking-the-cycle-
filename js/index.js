@@ -27,8 +27,10 @@ document.getElementById('add-day').addEventListener('click', function() {
         localStorage.setItem('dayCounter', counter);
     });    
 
-    document.getElementById('reset').addEventListener('click', function() {
+document.getElementById('reset').addEventListener('click', function() {
         counter = 0;
         document.getElementById('counter').textContent = counter;
         localStorage.setItem('dayCounter', counter);
     });
+
+document.getElementById('new-quote').addEventListener('click', displayRandomQuote);    
