@@ -1,25 +1,34 @@
 {
-  "quotes": [
-      "Every day is a new opportunity to change your life.",
-      "Sobriety is a journey, not a destination.",
-      "You are stronger than you think.",
-      "One day at a time.",
-      "Progress, not perfection.",
-      "The secret of getting ahead is getting started.",
-      "You didn't come this far to only come this far.",
-      "Recovery is an acceptance that your life is in shambles and you have to change it.",
-      "Rock bottom became the solid foundation on which I rebuilt my life."
-  ],
   "milestones": [
-      {
-          "id": 1,
-          "text": "Completed first day sober",
-          "date": "2023-05-01"
-      },
-      {
-          "id": 2,
-          "text": "Attended first support meeting",
-          "date": "2023-05-03"
-      }
+    {
+      "id": 1743012345440,
+      "text": "done"
+    },
+    {
+      "id": 1743012348790,
+      "text": "Day 1 completed!"
+    }
+  ],
+  "quotes": [
+    {
+      "id": "1",
+      "text": "You don't have to control your thoughts. You just have to stop letting them control you."
+    },
+    {
+      "id": "2",
+      "text": "Recovery is not one and done. It is a lifelong journey that takes place one day, one step at a time."
+    },
+    {
+      "id": "3",
+      "text": "Strength doesn't come from what you can do. It comes from overcoming the things you once thought you couldn't."
+    },
+    {
+      "id": "4",
+      "text": "Every day is a new opportunity to change your life."
+    },
+    {
+      "id": "5",
+      "text": "The secret of change is to focus all your energy not on fighting the old, but on building the new."
+    }
   ]
 }

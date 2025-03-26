@@ -1,92 +1,98 @@
 document.addEventListener('DOMContentLoaded', function() {
+    let dayCount = localStorage.getItem('dayCount') || 0;
+    document.getElementById('counter').textContent = dayCount;
 
-    let counter = localStorage.getItem('dayCounter') ? parseInt(localStorage.getItem('dayCounter')) : 0;
-document.getElementById('counter').textContent = counter;
-  
-    let quotes = [];
-    fetch('db.json')
-        .then(response => response.json())
-        .then(data => {
-            quotes = data.quotes;
-            displayRandomQuote();
-        })
-        .catch(error => console.error('Error loading quotes:', error));
+    const addDayBtn = document.getElementById('add-day');
+    const resetBtn = document.getElementById('reset');
+    const newQuoteBtn = document.getElementById('new-quote');
+    const milestoneForm = document.getElementById('milestone-form');
+    const milestoneList = document.getElementById('milestone-list');
+    const quoteElement = document.getElementById('quote');
 
-    let milestones = [];
-    fetch('db.json')
-        .then(response => response.json())
-        .then(data => {
-                milestones = data.milestones || [];
-                displayMilestones();
-        })
-        .catch(error => console.error('Error loading milestones:', error));
-
-document.getElementById('add-day').addEventListener('click', function() {
-        counter++;
-        document.getElementById('counter').textContent = counter;
-        localStorage.setItem('dayCounter', counter);
-    });    
-
-document.getElementById('reset').addEventListener('click', function() {
-        counter = 0;
-        document.getElementById('counter').textContent = counter;
-        localStorage.setItem('dayCounter', counter);
+    addDayBtn.addEventListener('click', function() {
+        dayCount++;
+        document.getElementById('counter').textContent = dayCount;
+        localStorage.setItem('dayCount', dayCount);
+        addMilestoneToList(`Day ${dayCount} completed!`);
+        saveMilestoneToDB(`Day ${dayCount} completed!`);
     });
 
-document.getElementById('new-quote').addEventListener('click', displayRandomQuote);
+    resetBtn.addEventListener('click', function() {
+        dayCount = 0;
+        document.getElementById('counter').textContent = dayCount;
+        localStorage.setItem('dayCount', dayCount);
+        milestoneList.innerHTML = '';
+        clearMilestonesInDB();
+    });
 
-document.getElementById('milestone-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const milestoneInput = document.getElementById('milestone');
-    const newMilestone = milestoneInput.value.trim();
+    milestoneForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const milestoneInput = document.getElementById('milestone');
+        const milestoneText = milestoneInput.value.trim();
+        
+        if (milestoneText) {
+            addMilestoneToList(milestoneText);
+            saveMilestoneToDB(milestoneText);
+            milestoneInput.value = '';
+        }
+    });
 
-    if (newMilestone) {
-        milestones.push({
-            id: Date.now(),
-            text: newMilestone,
-            date: new Date().toLocaleDateString()
+    newQuoteBtn.addEventListener('click', fetchRandomQuote);
+
+    fetch('https://breaking-the-cycle-backend.vercel.app/milestones')
+        .then(response => response.json())
+        .then(milestones => {
+            milestones.forEach(milestone => {
+                addMilestoneToList(milestone.text, milestone.id);
+            });
         });
 
-        milestoneInput.value = '';
-        displayMilestones();
-        saveMilestones();
-    }
-});
+    fetchRandomQuote();
 
-function displayRandomQuote() {
-    if (quotes.length > 0) {
-        const randomIndex = Math.floor(Math.random() * quotes.length);
-        document.getElementById('quote').textContent = quotes[randomIndex];
-    } else {
-        document.getElementById('quote').textContent = "You're doing great! Keep going!";
-    }
-}
-
-function displayMilestones() {
-    const milestoneList = document.getElementById('milestone-list');
-    milestoneList.innerHTML = '';
-    
-    milestones.forEach(milestone => {
+    function addMilestoneToList(text, id) {
         const li = document.createElement('li');
-        li.textContent = `${milestone.date}: ${milestone.text}`;
+        li.textContent = text;
         
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = '×';
-        deleteBtn.className = 'delete-btn';
-        deleteBtn.addEventListener('click', () => deleteMilestone(milestone.id));
+        deleteBtn.className = 'delete-milestone';
+        deleteBtn.addEventListener('click', function() {
+            deleteMilestoneFromDB(id || Date.now());
+            li.remove();
+        });
         
         li.appendChild(deleteBtn);
         milestoneList.appendChild(li);
-    });
-}
+    }
 
-function deleteMilestone(id) {
-    milestones = milestones.filter(milestone => milestone.id !== id);
-    displayMilestones();
-    saveMilestones();
-}
+    function saveMilestoneToDB(text) {
+        fetch('https://breaking-the-cycle-backend.vercel.app/milestones', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ text, id: Date.now() })
+        });
+    }
 
-function saveMilestones() {
-    console.log('Milestones updated:', milestones);
-}
+    function deleteMilestoneFromDB(id) {
+        fetch(`https://breaking-the-cycle-backend.vercel.app/milestones/${id}`, {
+            method: 'DELETE'
+        });
+    }
+
+    function clearMilestonesInDB() {
+        fetch('https://breaking-the-cycle-backend.vercel.app/milestones', {
+            method: 'DELETE'
+        });
+    }
+
+    function fetchRandomQuote() {
+        fetch('https://breaking-the-cycle-backend.vercel.app/quotes')
+            .then(response => response.json())
+            .then(quotes => {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                quoteElement.textContent = quotes[randomIndex].text;
+            });
+    }
 });
