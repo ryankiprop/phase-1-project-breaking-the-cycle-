@@ -10,3 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
             displayRandomQuote();
         })
         .catch(error => console.error('Error loading quotes:', error));
+
+    let milestones = [];
+    fetch('db.json')
+        .then(response => response.json())
+        .then(data => {
+                milestones = data.milestones || [];
+                displayMilestones();
+        })
+        .catch(error => console.error('Error loading milestones:', error));
+    
