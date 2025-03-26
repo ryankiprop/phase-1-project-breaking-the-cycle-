@@ -39,3 +39,17 @@ document.getElementById('milestone-form').addEventListener('submit', function(e)
     e.preventDefault();
     const milestoneInput = document.getElementById('milestone');
     const newMilestone = milestoneInput.value.trim();
+
+    if (newMilestone) {
+        milestones.push({
+            id: Date.now(),
+            text: newMilestone,
+            date: new Date().toLocaleDateString()
+        });
+
+        milestoneInput.value = '';
+        displayMilestones();
+        saveMilestones();
+    }
+});
+
