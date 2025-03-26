@@ -13,7 +13,7 @@ h1{
 body{
   background-image:url(..//images/back.jpg) ;
   background-repeat: no-repeat;
-  background-size: 110%;
+  background-size: 120%;
 }
 
 .links{
@@ -116,4 +116,11 @@ li {
 
 #new-quote{
   width: fit-content;
+}
+#quote{
+  color: #f3f3f3;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 20px;
 }
