@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     let counter = localStorage.getItem('dayCounter') ? parseInt(localStorage.getItem('dayCounter')) : 0;
     document.getElementById('counter').textContent = counter;
   
@@ -26,3 +26,9 @@ document.getElementById('add-day').addEventListener('click', function() {
         document.getElementById('counter').textContent = counter;
         localStorage.setItem('dayCounter', counter);
     });    
+
+    document.getElementById('reset').addEventListener('click', function() {
+        counter = 0;
+        document.getElementById('counter').textContent = counter;
+        localStorage.setItem('dayCounter', counter);
+    });
