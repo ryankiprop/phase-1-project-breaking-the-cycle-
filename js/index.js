@@ -62,3 +62,21 @@ function displayRandomQuote() {
     }
 }
 
+function displayMilestones() {
+    const milestoneList = document.getElementById('milestone-list');
+    milestoneList.innerHTML = '';
+    
+    milestones.forEach(milestone => {
+        const li = document.createElement('li');
+        li.textContent = `${milestone.date}: ${milestone.text}`;
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = '×';
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.addEventListener('click', () => deleteMilestone(milestone.id));
+        
+        li.appendChild(deleteBtn);
+        milestoneList.appendChild(li);
+    });
+}
+
