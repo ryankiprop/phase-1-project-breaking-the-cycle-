@@ -1,8 +1,25 @@
 {
-    "days": 0,
-    "quotes": [
-      {"text": "One day at a time", "author": "AA Proverb"},
-      {"text": "You can do this!", "author": null}
-    ],
-    "milestones": []
-  }
+  "quotes": [
+      "Every day is a new opportunity to change your life.",
+      "Sobriety is a journey, not a destination.",
+      "You are stronger than you think.",
+      "One day at a time.",
+      "Progress, not perfection.",
+      "The secret of getting ahead is getting started.",
+      "You didn't come this far to only come this far.",
+      "Recovery is an acceptance that your life is in shambles and you have to change it.",
+      "Rock bottom became the solid foundation on which I rebuilt my life."
+  ],
+  "milestones": [
+      {
+          "id": 1,
+          "text": "Completed first day sober",
+          "date": "2023-05-01"
+      },
+      {
+          "id": 2,
+          "text": "Attended first support meeting",
+          "date": "2023-05-03"
+      }
+  ]
+}
