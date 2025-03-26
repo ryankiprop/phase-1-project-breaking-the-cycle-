@@ -80,3 +80,10 @@ function displayMilestones() {
     });
 }
 
+function deleteMilestone(id) {
+    milestones = milestones.filter(milestone => milestone.id !== id);
+    displayMilestones();
+    saveMilestones();
+}
+
+
