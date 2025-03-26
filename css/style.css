@@ -13,7 +13,7 @@ h1{
 body{
   background-image:url(..//images/back.jpg) ;
   background-repeat: no-repeat;
-  background-size: 120%;
+  background-size: 130%;
 }
 
 .links{
@@ -35,7 +35,7 @@ h2{
 footer{
   min-height: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction:space-between;
   margin-top: auto;
 }
 a{
@@ -123,4 +123,23 @@ li {
   font-weight: 800;
   font-style: normal;
   font-size: 20px;
+}
+p{
+  color: brown;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 20px;
+}
+.about{
+  width: 40%;
+  height: fit-content;
+  margin-right: 60px;
+}
+
+.resources{
+  width:50%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 60px;
 }
