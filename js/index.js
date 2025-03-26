@@ -86,4 +86,7 @@ function deleteMilestone(id) {
     saveMilestones();
 }
 
-
+function saveMilestones() {
+    console.log('Milestones updated:', milestones);
+}
+});
